@@ -258,12 +258,12 @@
 								<div class="sub-mega-menu">
 									<div class="nav flex-column nav-pills" role="tablist">
 										<a class="nav-link active" data-toggle="pill" href="#news-0" role="tab">All</a>
-										{% for cate in categorys %}
+										{% for cate in categories %}
 										<a class="nav-link" data-toggle="pill" href="#news-1" role="tab">{{ cate.name }}</a>
 										{% endfor %}
 									</div>
 									
-
+									{% with first_news|slice:":4" as sliced_news %}
 									<div class="tab-content">
 										<div class="tab-pane show active" id="news-0" role="tabpanel">
 											<div class="row">
@@ -271,19 +271,19 @@
 													<!-- Item post -->	
 													<div>
 														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-															<img src="{% static "images/post-05.jpg" %}" alt="IMG">
+															<img src="{{ sliced_news.3.image.url }}" alt="IMG">
 														</a>
 
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	{{ sliced_news.3.title }}
 																</a>
 															</h5>
 
 															<span class="cl8">
 																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Music
+																	{{ sliced_news.3.category.name }}
 																</a>
 
 																<span class="f1-s-3 m-rl-3">
@@ -291,7 +291,7 @@
 																</span>
 
 																<span class="f1-s-3">
-																	Feb 18
+																	{{ sliced_news.3.created_at|date:"M d" }}
 																</span>
 															</span>
 														</div>
@@ -302,19 +302,19 @@
 													<!-- Item post -->	
 													<div>
 														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-															<img src="{% static "images/post-10.jpg" %}" alt="IMG">
+															<img src="{{ sliced_news.2.image.url }}" alt="IMG">
 														</a>
 
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	{{ sliced_news.2.title }}
 																</a>
 															</h5>
 
 															<span class="cl8">
 																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Finance
+																	{{ sliced_news.2.category.name }}
 																</a>
 
 																<span class="f1-s-3 m-rl-3">
@@ -322,7 +322,7 @@
 																</span>
 
 																<span class="f1-s-3">
-																	Jan 15
+																	{{ sliced_news.2.created_at|date:"M d" }}
 																</span>
 															</span>
 														</div>
@@ -333,19 +333,19 @@
 													<!-- Item post -->	
 													<div>
 														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-															<img src="{% static "images/post-14.jpg" %}" alt="IMG">
+															<img src="{{ sliced_news.1.image.url }}" alt="IMG">
 														</a>
 
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	{{ sliced_news.1.category.name }}
 																</a>
 															</h5>
 
 															<span class="cl8">
 																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Beach
+																	{{ sliced_news.1.category.name }}
 																</a>
 
 																<span class="f1-s-3 m-rl-3">
@@ -353,7 +353,7 @@
 																</span>
 
 																<span class="f1-s-3">
-																	Feb 12
+																	{{ sliced_news.1.created_at|date:"M d" }}
 																</span>
 															</span>
 														</div>
@@ -364,19 +364,19 @@
 													<!-- Item post -->	
 													<div>
 														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-															<img src="{% static "images/post-36.jpg" %}" alt="IMG">
+															<img src="{{ sliced_news.0.image.url }}" alt="IMG">
 														</a>
 
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	{{ sliced_news.0.title }}
 																</a>
 															</h5>
 
 															<span class="cl8">
 																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Technology
+																	{{ sliced_news.0.category.name }}
 																</a>
 
 																<span class="f1-s-3 m-rl-3">
@@ -384,7 +384,7 @@
 																</span>
 
 																<span class="f1-s-3">
-																	Jan 20
+																	{{ sliced_news.0.created_at|date:"M d" }}
 																</span>
 															</span>
 														</div>
@@ -392,6 +392,7 @@
 												</div>
 											</div>
 										</div>
+										{% endwith %}
 
 										<div class="tab-pane" id="news-1" role="tabpanel">
 											<div class="row">
@@ -1187,7 +1188,7 @@
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	4444444
 																</a>
 															</h5>
 
@@ -1218,7 +1219,7 @@
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	33333
 																</a>
 															</h5>
 
@@ -2195,7 +2196,7 @@
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	rrrrrrrr
 																</a>
 															</h5>
 
@@ -2226,7 +2227,7 @@
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-																	Donec metus orci, malesuada et lectus vitae
+																	ddddd
 																</a>
 															</h5>
 
@@ -2305,102 +2306,101 @@
 		</div>
 	</div>
 		
-	<!-- Feature post -->
-	<section class="bg0">
-		<div class="container">
-			<div class="row m-rl--1">
-				<div class="col-md-6 p-rl-1 p-b-2">
-					<div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({% static "images/post-01.jpg" %});">
-						<a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+{% with first_news|slice:":4" as sliced_news %}
+<section class="bg0">
+    <div class="container">
+        <div class="row m-rl--1">
+            <!-- News[0] - katta div -->
+            <div class="col-md-6 p-rl-1 p-b-2">
+                {% if sliced_news.0 %}
+                <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url('{{ sliced_news.0.image.url }}');">
+                    <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                    <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                        <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                            {{ sliced_news.0.category.name }}
+                        </a>
+                        <h3 class="how1-child2 m-t-14 m-b-10">
+                            <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
+                                {{ sliced_news.0.title }}
+                            </a>
+                        </h3>
+                        <span class="how1-child2">
+                            <span class="f1-s-4 cl11">Author</span>
+                            <span class="f1-s-3 cl11 m-rl-3">-</span>
+                            <span class="f1-s-3 cl11">{{ sliced_news.0.created_at|date:"M d" }}</span>
+                        </span>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
 
-						<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-							<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-								Business
-							</a>
+            <!-- News[1], [2], [3] - kichik divlar -->
+            <div class="col-md-6 p-rl-1">
+                <div class="row m-rl--1">
 
-							<h3 class="how1-child2 m-t-14 m-b-10">
-								<a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
-									Microsoft quisque at ipsum vel orci eleifend ultrices
-								</a>
-							</h3>
+                    {% if sliced_news.1 %}
+                    <div class="col-12 p-rl-1 p-b-2">
+                        <div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url('{{ sliced_news.1.image.url }}');">
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    {{ sliced_news.1.category.name }}
+                                </a>
+                                <h3 class="how1-child2 m-t-14">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
+                                        {{ sliced_news.1.title }}
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
-							<span class="how1-child2">
-								<span class="f1-s-4 cl11">
-									Jack Sims
-								</span>
+                    {% if sliced_news.2 %}
+                    <div class="col-sm-6 p-rl-1 p-b-2">
+                        <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('{{ sliced_news.2.image.url }}');">
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    {{ sliced_news.2.category.name }}
+                                </a>
+                                <h3 class="how1-child2 m-t-14">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
+                                        {{ sliced_news.2.title }}
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
-								<span class="f1-s-3 cl11 m-rl-3">
-									-
-								</span>
+                    {% if sliced_news.3 %}
+                    <div class="col-sm-6 p-rl-1 p-b-2">
+                        <div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url('{{ sliced_news.3.image.url }}');">
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+                                <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                    {{ sliced_news.3.category.name }}
+                                </a>
+                                <h3 class="how1-child2 m-t-14">
+                                    <a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
+                                        {{ sliced_news.3.title }}
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endwith %}
 
-								<span class="f1-s-3 cl11">
-									Feb 16
-								</span>
-							</span>
-						</div>
-					</div>
-				</div>
 
-				<div class="col-md-6 p-rl-1">
-					<div class="row m-rl--1">
-						<div class="col-12 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url({% static "images/post-02.jpg" %});">
-								<a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
 
-								<div class="flex-col-e-s s-full p-rl-25 p-tb-24">
-									<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-										Culture
-									</a>
-
-									<h3 class="how1-child2 m-t-14">
-										<a href="blog-detail-01.html" class="how-txt1 size-a-7 f1-l-2 cl0 hov-cl10 trans-03">
-											London ipsum dolor sit amet, consectetur adipiscing elit.
-										</a>
-									</h3>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url({% static "images/post-03.jpg" %});">
-								<a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-								<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-									<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-										Life Style
-									</a>
-
-									<h3 class="how1-child2 m-t-14">
-										<a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-											Pellentesque dui nibh, pellen-tesque ut dapibus ut
-										</a>
-									</h3>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url({% static "images/post-04.jpg" %});">
-								<a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
-
-								<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-									<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-										Sport
-									</a>
-
-									<h3 class="how1-child2 m-t-14">
-										<a href="blog-detail-01.html" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
-											Motobike Vestibulum vene-natis purus nec nibh volutpat
-										</a>
-									</h3>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<!-- Post -->
 	<section class="bg0 p-t-70">
@@ -2457,7 +2457,7 @@
 							</div>
 								
 
-							<!-- Tab panes -->
+							{% with first_news|slice:":4" as sliced_news %}<!-- Tab panes -->
 							<div class="tab-content p-t-35">
 								<!-- - -->
 								<div class="tab-pane fade show active" id="tab1-1" role="tabpanel">
@@ -2465,20 +2465,21 @@
 										<div class="col-sm-6 p-r-25 p-r-15-sr991">
 											<!-- Item post -->	
 											<div class="m-b-30">
+												{% if sliced_news.0 %}
 												<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-05.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.0.image.url }}" alt="IMG">
 												</a>
-
+												
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-															American live music lorem ipsum dolor sit amet consectetur 
+															{{ sliced_news.0.title }} 
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-															Music
+															{{ sliced_news.0.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -2486,30 +2487,31 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 18
+															{{ sliced_news.0.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
 											</div>
+											
 										</div>
-
+							{% endif %}
 										<div class="col-sm-6 p-r-25 p-r-15-sr991">
 											<!-- Item post -->	
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-06.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.1.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.1.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Music
+															{{ sliced_news.1.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -2517,7 +2519,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 17
+															{{ sliced_news.1.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -2526,19 +2528,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-07.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.2.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.2.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Game
+															{{ sliced_news.2.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -2546,7 +2548,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 16
+															{{ sliced_news.2.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -2555,19 +2557,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-08.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.3.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.3.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Celebrity
+															{{ sliced_news.3.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -2575,7 +2577,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 12
+															{{ sliced_news.3.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -2583,6 +2585,7 @@
 										</div>
 									</div>
 								</div>
+								{% endwith %}
 
 								<!-- - -->
 								<div class="tab-pane fade" id="tab1-2" role="tabpanel">
@@ -2811,7 +2814,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															Don
 														</a>
 													</h5>
 
@@ -3032,7 +3035,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															gggggg
 														</a>
 													</h5>
 
@@ -3132,6 +3135,7 @@
 								
 
 							<!-- Tab panes -->
+							 {% with first_news|slice:":4" as sliced_news %}
 							<div class="tab-content p-t-35">
 								<!-- - -->
 								<div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
@@ -3140,19 +3144,19 @@
 											<!-- Item post -->	
 											<div class="m-b-30">
 												<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-10.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.3.image.url }}" alt="IMG">
 												</a>
 
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-															Bitcoin lorem ipsum dolor sit amet consectetur 
+															 {{ sliced_news.3.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-															Finance
+															{{ sliced_news.3.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3160,7 +3164,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 18
+															{{ sliced_news.3.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3171,19 +3175,19 @@
 											<!-- Item post -->	
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-11.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.2.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.2.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Small Business
+															{{ sliced_news.2.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3191,7 +3195,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 17
+															{{ sliced_news.2.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3200,19 +3204,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-12.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.0.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.0.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Economy
+															{{ sliced_news.0.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3220,7 +3224,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 16
+															{{ sliced_news.0.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3229,19 +3233,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-13.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.1.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.1.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Money & Markets
+															{{ sliced_news.1.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3249,7 +3253,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 12
+															{{ sliced_news.1.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3257,7 +3261,7 @@
 										</div>
 									</div>
 								</div>
-
+								{% endwith %}
 								<!-- - -->
 								<div class="tab-pane fade" id="tab2-2" role="tabpanel">
 									<div class="row">
@@ -3271,7 +3275,7 @@
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-															Bitcoin lorem ipsum dolor sit amet consectetur 
+															test
 														</a>
 													</h5>
 
@@ -3610,7 +3614,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															test
 														</a>
 													</h5>
 
@@ -3684,7 +3688,7 @@
 							</div>
 								
 
-							<!-- Tab panes -->
+							<!-- Tab panes -->{% with first_news|slice:":4" as sliced_news %}
 							<div class="tab-content p-t-35">
 								<!-- - -->
 								<div class="tab-pane fade show active" id="tab3-1" role="tabpanel">
@@ -3693,19 +3697,19 @@
 											<!-- Item post -->	
 											<div class="m-b-30">
 												<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-14.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.3.image.url }}" alt="IMG">
 												</a>
 
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-															You wish lorem ipsum dolor sit amet consectetur 
+															{{ sliced_news.3.title }}	
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-															Hotels
+															{{ sliced_news.3.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3713,7 +3717,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 18
+															{{ sliced_news.3.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3724,19 +3728,19 @@
 											<!-- Item post -->	
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-15.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.1.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.1.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Beachs
+															{{ sliced_news.1.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3744,7 +3748,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 17
+															{{ sliced_news.1.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3753,19 +3757,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-16.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.0.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.0.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Flight
+															{{ sliced_news.0.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3773,7 +3777,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 16
+															{{ sliced_news.0.created_at|date:"M d" }}	
 														</span>
 													</span>
 												</div>
@@ -3782,19 +3786,19 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static "images/post-17.jpg" %}" alt="IMG">
+													<img src="{{ sliced_news.2.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ sliced_news.2.title }}
 														</a>
 													</h5>
 
 													<span class="cl8">
 														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Culture
+															{{ sliced_news.2.category.name }}
 														</a>
 
 														<span class="f1-s-3 m-rl-3">
@@ -3802,7 +3806,7 @@
 														</span>
 
 														<span class="f1-s-3">
-															Feb 12
+															{{ sliced_news.2.created_at|date:"M d" }}
 														</span>
 													</span>
 												</div>
@@ -3810,7 +3814,7 @@
 										</div>
 									</div>
 								</div>
-
+								{% endwith %}
 								<!-- - -->
 								<div class="tab-pane fade" id="tab3-2" role="tabpanel">
 									<div class="row">
@@ -3855,7 +3859,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															sssss
 														</a>
 													</h5>
 
@@ -4230,7 +4234,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															Deeeeee
 														</a>
 													</h5>
 
@@ -4259,7 +4263,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															Ddddd
 														</a>
 													</h5>
 
@@ -4288,7 +4292,7 @@
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															rrrrrrrr
 														</a>
 													</h5>
 
