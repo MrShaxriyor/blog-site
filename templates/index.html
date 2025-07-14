@@ -26,7 +26,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body 
+class="animsition">
 	
 	<!-- Header -->
 	<header>
@@ -55,11 +56,11 @@
 							Contact
 						</a>
 
-						<a href="#" class="left-topbar-item">
+						<a href="{% url "signup" %}" class="left-topbar-item">
 							Sing up
 						</a>
 
-						<a href="#" class="left-topbar-item">
+						<a href="{% url "get-login" %}" class="left-topbar-item">
 							Log in
 						</a>
 					</div>
@@ -129,11 +130,11 @@
 							Contact
 						</a>
 
-						<a href="#" class="left-topbar-item">
+						<a href="{% url "signup" %}" class="left-topbar-item">
 							Sing up
 						</a>
 
-						<a href="#" class="left-topbar-item">
+						<a href="{% url "get-login" %}" class="left-topbar-item">
 							Log in
 						</a>
 					</li>
