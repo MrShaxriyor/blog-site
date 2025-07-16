@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from post.models import News, Comment, Saved, Contact, Category
 # Create your views here.
 
 
@@ -54,6 +55,16 @@ def signup_view(request):
     return render(request, 'accounts/reg.html')
 
 
-@login_required
+# @login_required
 def home_view(request):
     return render(request, 'accounts/home.html')
+
+# @login_required
+def pro_view(request):
+    user = request.user
+    context = {
+        'username': user.username,
+        'email': user.email,
+        'joined': user.date_joined,
+    }
+    return render(request, 'accounts/profile.html', context)

@@ -1,0 +1,7 @@
+<h2>📩 Kodni kiriting</h2>
+<form method="POST">
+    {% csrf_token %}
+    {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+    <input type="text" name="code" placeholder="6 xonali kod" required>
+    <button type="submit">Tasdiqlash</button>
+</form>
