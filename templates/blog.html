@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +6,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="{% static "images/icons/favicon.png" %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/fontawesome-5.0.8/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static "fonts/fontawesome-5.0.8/css/fontawesome-all.min.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static "fonts/iconic/css/material-design-iconic-font.min.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{% static "vendor/animate/animate.css" %}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static "vendor/css-hamburgers/hamburgers.min.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	{% comment %} <link rel="stylesheet" type="text/css" href="{% static "vendor/animsition/css/animsition.min.css" %}"> {% endcomment %}
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static "css/util.min.css" %}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -2401,32 +2401,31 @@
 						</div>
 
 						<!-- Leave a comment -->
-						<div>
-							<h4 class="f1-l-4 cl3 p-b-12">
-								Leave a Comment
-							</h4>
+<div>
+  <h4 class="f1-l-4 cl3 p-t-30">Kommentlar:</h4>
 
-							<p class="f1-s-13 cl8 p-b-40">
-								Your email address will not be published. Required fields are marked *
-							</p>
+  {% for comment in comments %}
+    <div class="p-t-15">
+      <strong>{{ comment.user.username }}</strong> —
+      <small>{{ comment.created_at|date:"Y-m-d H:i" }}</small>
+      <p>{{ comment.text }}</p>
+    </div>
+  {% empty %}
+    <p>Hozircha hech qanday komment yo‘q.</p>
+  {% endfor %}
 
-							<form>
-								<textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
+  {% if user.is_authenticated %}
+    <form method="POST">
+      {% csrf_token %}
+      <textarea name="text" rows="3" class="form-control" placeholder="Komment yozing..."></textarea>
+      <button type="submit" class="btn btn-primary mt-2">Yuborish</button>
+    </form>
+  {% else %}
+    <p>Komment yozish uchun <a href="{% url 'get-login' %}">kirish</a> qiling.</p>
+  {% endif %}
+</div>
 
-								<input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="name" placeholder="Name*">
 
-								<input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="email" placeholder="Email*">
-
-								<input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="website" placeholder="Website">
-
-								<button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
-									Post Comment
-								</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				
 				<!-- Sidebar -->
 				<div class="col-md-10 col-lg-4 p-b-30">
 					<div class="p-l-10 p-rl-0-sr991 p-t-70">						
@@ -2895,14 +2894,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{% static "vendor/jquery/jquery-3.2.1.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="{% static "vendor/animsition/js/animsition.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{% static "vendor/bootstrap/js/popper.js" %}"></script>
+	<script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="{% static "js/main.js" %}"></script>
 
 </body>
 </html>

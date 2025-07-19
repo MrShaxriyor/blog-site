@@ -4,6 +4,8 @@
     <title>Home</title>
 </head>
 <body>
+    <form method="POST">
+    {% csrf_token %}
     <h1>Welcome, {{ request.user.username }}!</h1>
     <a href="{% url 'get-profile' %}">Profile</a>
 </body>

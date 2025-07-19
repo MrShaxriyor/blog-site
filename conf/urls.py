@@ -24,8 +24,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('', include('auth.urls')),
-    path('', include('pword.urls')),
+    path('auth/', include('auth.urls')),
+    path('pword/', include('pword.urls')),
+    path('rpass/', include('rpass.urls')),
+    path('comment/', include('post.urls')),
     
 ]
 

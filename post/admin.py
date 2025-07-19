@@ -18,3 +18,4 @@ class categoryad(admin.ModelAdmin):
 
 admin.site.register(News, newsAdmin)
 admin.site.register(Category, categoryad)
+admin.site.register(Comment)

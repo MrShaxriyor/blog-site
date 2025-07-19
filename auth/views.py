@@ -20,7 +20,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('get-home')
         else:
             messages.error(request, 'Notugri username yoki parol')
             return redirect('get-login')
@@ -50,7 +50,7 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         messages.success(request, "Successfully")
-        return redirect('home')
+        return redirect('get-login')
 
     return render(request, 'accounts/reg.html')
 

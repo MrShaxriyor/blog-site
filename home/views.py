@@ -27,3 +27,5 @@ def get_home(request):
         'categories': categories,
         'first_news': first_news[-4:]
     })
+
+

@@ -1,0 +1,8 @@
+<h2>🔑 Yangi parol kiriting</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="password" name="password" placeholder="Yangi parol" required>
+  <input type="password" name="password2" placeholder="Parolni takrorlang" required>
+  <button type="submit">✅ Saqlash</button>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+</form>

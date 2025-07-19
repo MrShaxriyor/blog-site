@@ -27,8 +27,13 @@
 <!--===============================================================================================-->
 </head>
 <body 
+
+
+
+
+
 class="animsition">
-	
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -103,7 +108,7 @@ class="animsition">
 					</span>
 				</div>
 			</div>
-
+<a href="{% url "get-profile" %}">profile</a>	
 			<!-- Menu Mobile -->
 			<div class="menu-mobile">
 				<ul class="topbar-mobile">
@@ -364,7 +369,8 @@ class="animsition">
 												<div class="col-3">
 													<!-- Item post -->	
 													<div>
-														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+														<a href="{% url 'get-detail' sliced_news.0.id %}" class="wrap-pic-w hov1 trans-03">
+
 															<img src="{{ sliced_news.0.image.url }}" alt="IMG">
 														</a>
 
@@ -2321,7 +2327,7 @@ class="animsition">
                             {{ sliced_news.0.category.name }}
                         </a>
                         <h3 class="how1-child2 m-t-14 m-b-10">
-                            <a href="blog-detail-01.html" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
+                            <a href="{% url "get-detail" sliced_news.0.id %}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
                                 {{ sliced_news.0.title }}
                             </a>
                         </h3>

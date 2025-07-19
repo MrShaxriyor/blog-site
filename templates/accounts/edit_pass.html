@@ -1,0 +1,7 @@
+<h2>🔐 Parolni tiklash</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="email" name="email" placeholder="Email" required>
+  <button type="submit">📩 Kod yuborish</button>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+</form>
